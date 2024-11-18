@@ -17,7 +17,7 @@ class DioClient {
         )) {
     if (kDebugMode) {
       debugPrint(_baseUrl);
-      // _dio.interceptors.addAll([LoggerInterceptor()]);
+      _dio.interceptors.addAll([LoggerInterceptor()]);
     }
   }
 

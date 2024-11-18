@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:try_aplus/common/bloc/auth/auth.dart';
-import 'package:try_aplus/features/auth/auth.dart';
-import 'package:try_aplus/features/dashboard/dashboard_screen.dart';
+// import 'package:try_aplus/features/auth/auth.dart';
+// import 'package:try_aplus/features/dashboard/dashboard_screen.dart';
 import 'package:toastification/toastification.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'package:api/api.dart';
+import 'package:api/lib.dart';
 import 'package:tools/tools.dart';
 
 import 'utils/utils.dart' show Routes;

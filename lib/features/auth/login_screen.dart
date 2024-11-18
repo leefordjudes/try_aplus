@@ -1,7 +1,6 @@
 import 'package:api/api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:try_aplus/features/auth/signup_screen.dart';
 import 'package:try_aplus/utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -40,12 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   Routes.dashboardScreen(),
                   (_) => false,
                 );
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => const SignupScreen(),
-                //   ),
-                // );
               },
               child: const Text('Goto Signup'),
             ),

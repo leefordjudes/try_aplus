@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
     print('login screen init state');
     final api = context.read<ApiRepository>();
     print('storage: ${api.storage.toString()}');
-    token = api.storage.read<String>('token')!;
+    token = api.storage.read<String>('token') ?? '';
     print('login screen token: $token');
     super.initState();
   }
@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
                   context,
-                  Routes.signupScreen(),
+                  Routes.dashboardScreen(),
                   (_) => false,
                 );
                 // Navigator.push(

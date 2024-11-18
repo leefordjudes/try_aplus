@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:api/api.dart';
+import 'package:try_aplus/utils/utils.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -20,11 +21,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
     token = api.storage.read<String>('token')!;
     print('storage: ${api.storage.toString()}');
     print('read token: $token');
-    api.storage.remove('token').then((res) {
-      final tkn = api.storage.read<String>('token');
-      print('after token remove: $tkn');
-    });
-    print('token remove');
+    // api.storage.remove('token').then((res) {
+    //   final tkn = api.storage.read<String>('token');
+    //   print('after token remove: $tkn');
+    // });
+    // print('token remove');
   }
 
   @override
@@ -34,7 +35,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
         title: const Text('Try Aplus'),
       ),
       body: Center(
-        child: Text('Dashboard Screen $token'),
+        child: Column(
+          children: [
+            Text('Dashboard Screen $token'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  Routes.signupScreen(),
+                  (_) => false,
+                );
+              },
+              child: const Text('Goto Login'),
+            ),
+          ],
+        ),
       ),
     );
   }

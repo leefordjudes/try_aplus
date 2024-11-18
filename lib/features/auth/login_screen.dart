@@ -12,8 +12,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _navigatorKey = GlobalKey<NavigatorState>();
-  NavigatorState get _navigator => _navigatorKey.currentState!;
   late final String token;
   @override
   void initState() {
@@ -37,7 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
             Text('Login Screen $token'),
             ElevatedButton(
               onPressed: () {
-                _navigator.pushAndRemoveUntil(
+                Navigator.pushAndRemoveUntil(
+                  context,
                   Routes.signupScreen(),
                   (_) => false,
                 );

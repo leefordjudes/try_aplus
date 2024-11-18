@@ -75,7 +75,7 @@ class _AppViewState extends State<AppView> {
     return ToastificationWrapper(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        // navigatorKey: _navigatorKey,
+        navigatorKey: _navigatorKey,
         theme: ThemeData(useMaterial3: false),
         onGenerateRoute: (_) => Routes.splashScreen(),
         builder: (context, child) {
@@ -110,12 +110,12 @@ class _AppViewState extends State<AppView> {
             },
             builder: (context, state) {
               print('builder: $state');
-              Widget currentScreen = const LoginScreen();
-              if (state is Authenticated) {
-                currentScreen = const DashboardScreen();
-              }
-              return currentScreen;
-              // return child!;
+              // Widget currentScreen = const LoginScreen();
+              // if (state is Authenticated) {
+              //   currentScreen = const DashboardScreen();
+              // }
+              // return currentScreen;
+              return child!;
             },
           );
         },

@@ -12,8 +12,6 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final _navigatorKey = GlobalKey<NavigatorState>();
-  NavigatorState get _navigator => _navigatorKey.currentState!;
   @override
   void initState() {
     print('signup screen init state');
@@ -34,7 +32,8 @@ class _SignupScreenState extends State<SignupScreen> {
             const Text('Signup Screen'),
             ElevatedButton(
               onPressed: () {
-                _navigator.pushAndRemoveUntil(
+                Navigator.pushAndRemoveUntil(
+                  context,
                   Routes.loginScreen(),
                   (_) => false,
                 );

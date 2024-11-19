@@ -36,14 +36,16 @@ class App extends StatelessWidget {
         RepositoryProvider(
           create: (context) => ApiRepository(
             errorHandler: (errors) {
+              print('errorHandler');
               final exception = errors.firstWhereOrNull(
                 (element) => element.isNotNullOrEmpty,
               );
               if (exception != null) {
+                print('toastError');
                 Toast.error(exception);
               }
             },
-            baseUrl: 'https://reqres.in/api',
+            baseUrl: 'https://reqres.in1/api',
             storage: GetStorage(),
           ),
         ),
@@ -98,13 +100,26 @@ class _AppViewState extends State<AppView> {
                 );
               }
               if (state is AuthenticationFailure) {
-                print('auth failure');
+                print('auth failure: ${state.error}');
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(
-                      state.error,
+                    content: Text(state.error),
+                    duration: const Duration(seconds: 10),
+                    behavior: SnackBarBehavior.floating,
+                    backgroundColor: const Color.fromARGB(200, 34, 34, 34),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    margin: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).size.height - 100,
+                      right: 20,
+                      left: 20,
                     ),
                   ),
+                );
+                _navigator.pushAndRemoveUntil(
+                  Routes.loginScreen(),
+                  (_) => false,
                 );
               }
             },

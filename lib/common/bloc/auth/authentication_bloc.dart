@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,9 +38,9 @@ class AuthenticationBloc
       final UserProfileResponse profile = await api.getUserProfile();
       print('user: ${profile.toJson()}');
       return emit(Authenticated(user: profile));
-    } catch (err) {
-      print('AuthenticationInitEvent error: ${err.toString()}');
-      return emit(AuthenticationFailure(err.toString()));
+    } on Exception catch (ex) {
+      print('AuthenticationInitEvent error: ${ex.toString()}');
+      return emit(AuthenticationFailure(ex.toString()));
     }
   }
 }

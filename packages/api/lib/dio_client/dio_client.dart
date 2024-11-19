@@ -46,8 +46,9 @@ class DioClient {
         onReceiveProgress: onReceiveProgress,
       );
       return response;
-    } on DioException {
-      rethrow;
+    } on DioException catch (ex) {
+      throw Exception(ex.message);
+      // rethrow;
     }
   }
 
